@@ -29,6 +29,36 @@ object List {
     case _ => 101
   }
 
+  def append[A](a1: List[A], a2: List[A]): List[A] = a1 match {
+    case Nil => a2
+    case Cons(h, t) => Cons(h, append(t, a2))
+  }
+
+
+  // ---------- Exercise ---------
+  def tail[A](l: List[A]): List[A] = l match {
+    case Nil => Nil
+    case Cons(h, t) => t
+  }
+
+  def setHead[A](l: List[A], h: A): List[A] = l match {
+    case Nil => Cons(h, Nil)
+    case Cons(_, tail) => Cons(h, tail)
+  }
+
+  def drop[A](l: List[A], n: Int): List[A] =
+    if (n <= 0) l
+    else l match {
+      case Nil => Nil
+      case Cons(_, t) => drop(t, n-1)
+    }
+
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Nil => Nil
+    case Cons(h, t) => if (f(h)) dropWhile(t, f) else l
+  }
+
+
   def main(args: Array[String]): Unit = {
     println(x)
   }
