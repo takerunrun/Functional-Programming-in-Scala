@@ -34,11 +34,15 @@ object Tree {
 
   def maximum2(tree: Tree[Int]): Int = fold(tree)(v => v)((l, r) => l max r)
 
-  
+  def depth2[A](tree: Tree[A]): Int = fold(tree)(_ => 1)((l, r) => l max r)
+
+  def map2[A, B](tree: Tree[A])(f: A => B): Tree[B]
+    = fold(tree)(v => Leaf(f(v)): Tree[B])((l, r) => Branch(l, r))
 
   def main(args: Array[String]): Unit = {
     val t = Branch(Branch(Leaf(3), Leaf(1)), Branch(Leaf(5), Leaf(9)))
-    println(size2(t))
-    println(maximum2(t))
+    println(t)
+    println(map(t)(x => 2 * x))
+    println(map2(t)(x => 2 * x))
   }
 }
