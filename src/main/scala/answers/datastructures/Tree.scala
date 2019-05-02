@@ -1,4 +1,4 @@
-package datastructures
+package answers.datastructures
 
 sealed trait Tree[+A]
 case class Leaf[A](value: A) extends Tree[A]

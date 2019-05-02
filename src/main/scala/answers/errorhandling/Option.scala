@@ -1,4 +1,4 @@
-package errorhandling
+package answers.errorhandling
 
 sealed trait Option[+A] {
   def map[B](f: A => B): Option[B] = this match {
@@ -44,8 +44,6 @@ object Option {
   def mean(xs: Seq[Double]): Option[Double] =
     if (xs.isEmpty) None
     else Some(xs.sum / xs.length)
-
-  def variance(xs: Seq[Double]): Option[Double] =
 
   def main(args: Array[String]): Unit = {
 
